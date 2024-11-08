@@ -1,16 +1,18 @@
 import React from "react";
-
+import Post from "../components/Post";
 
 async function loadData() {
-    const res = await fetch("https://jsonplaceholder.typicode.com/posts");
+    const res = await fetch("https://reqres.in/api/users");
     const data = await res.json();
     return data;
 }
+
 export default async function User() {
     const data = await loadData();
     return <div>
-        {data.map((item) => (
-            <div key={item.id}>{item.title}</div>
+        {data.data.map((item) => (
+            <Post post={item} />
         ))}
+
     </div>;
 }
