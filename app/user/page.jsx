@@ -11,7 +11,7 @@ export default async function User() {
     const data = await loadData();
     return <div>
         {data.data.map((item) => (
-            <Post post={item} />
+            <Post key={item.id} post={item} />
         ))}
 
     </div>;
